@@ -10,7 +10,6 @@ Key = Enum('Key', 'add alt back cancel capital category_arrow category_cut categ
 
 STAGE_SIZE = (500.0, 400.0)
 ORIGIN = (STAGE_SIZE[0]/2.0, STAGE_SIZE[1]/2.0)
-MEDIA = r'C:\Program Files (x86)\Scratch\Media'
 
 FLAG_EVENT = object()
 

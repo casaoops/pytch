@@ -3,14 +3,21 @@ from __future__ import division
 from __future__ import unicode_literals
 import wx
 import os
+import sys
 from pytch import *
-from pytch.types import STAGE_SIZE, ORIGIN, MEDIA
+from pytch.types import STAGE_SIZE, ORIGIN
 from math import radians, cos, sin
 import threading
 
 wxkeys ={323:'help',1:'category_arrow',307:'alt',382:'numpad_end',310:'pause',309:'menu',195:'special3',194:'special2',193:'special1',199:'special7',198:'special6',197:'special5',196:'special4',379:'numpad_down',201:'special9',200:'special8',376:'numpad_left',392:'numpad_divide',363:'f24',393:'windows_left',384:'numpad_insert',322:'insert',320:'execute',338:'decimal',321:'snapshot',316:'right',381:'numpad_next',8:'back',371:'numpad_f1',373:'numpad_f3',372:'numpad_f2',374:'numpad_f4',301:'lbutton',313:'home',378:'numpad_right',32:'space',362:'f23',361:'f22',360:'f21',359:'f20',367:'pagedown',311:'capital',319:'print',209:'special17',2:'category_paging',308:'raw_control',212:'special20',337:'subtract',23:'control_w',390:'numpad_subtract',21:'control_u',20:'control_t',368:'numpad_space',388:'numpad_add',17:'control_q',16:'control_p',306:'shift',380:'numpad_pageup',25:'control_y',395:'windows_menu',7:'control_g',366:'prior',5:'control_e',4:'control_d',336:'separator',2:'control_b',1:'control_a',15:'control_o',14:'control_n',380:'numpad_prior',354:'f15',11:'control_k',10:'control_j',9:'control_i',8:'control_h',211:'special19',4:'category_jump',339:'divide',304:'mbutton',387:'numpad_multiply',317:'down',208:'special16',207:'special15',206:'special14',205:'special13',204:'special12',203:'special11',202:'special10',303:'cancel',386:'numpad_equal',383:'numpad_begin',318:'select',210:'special18',326:'numpad2',327:'numpad3',324:'numpad0',325:'numpad1',330:'numpad6',331:'numpad7',328:'numpad4',329:'numpad5',332:'numpad8',333:'numpad9',335:'add',367:'next',375:'numpad_home',300:'start',377:'numpad_up',302:'rbutton',22:'control_v',8:'category_tab',7:'category_navigation',19:'control_s',16:'category_cut',18:'control_r',0:'none',389:'numpad_separator',366:'pageup',315:'up',357:'f18',358:'f19',351:'f12',352:'f13',349:'f10',350:'f11',355:'f16',356:'f17',353:'f14',127:'delete',308:'control',340:'f1',341:'f2',342:'f3',343:'f4',344:'f5',345:'f6',346:'f7',347:'f8',348:'f9',27:'escape',26:'control_z',9:'tab',381:'numpad_pagedown',13:u'return',364:'numlock',24:'control_x',391:'numpad_decimal',370:'numpad_enter',6:'control_f',394:'windows_right',3:'control_c',334:'multiply',312:'end',13:'control_m',12:'control_l',305:'clear',308:'command',369:'numpad_tab',365:'scroll',385:'numpad_delete',314:'left'}
 
 USE_BUFFER = ('wxMSW' in wx.PlatformInfo) # use buffered drawing on Windows
+if sys.platform == 'win32':
+    MEDIA = r'C:\Program Files (x86)\Scratch\Media'
+elif sys.platform == 'darwin':
+    MEDIA = '/Applications/Scratch 1.4/Media/'
+else:
+    exit('Set MEDIA to a scratch media directory here')
 
 
 def load_image(path):
